@@ -1,0 +1,13 @@
+2.2" 240x320 TFT display, ILI9341, SPI  1x  https://www.laskarduino.cz/240x320-barevny-lcd-tft-displej-2-2--spi/
+Li-ion charger, TP4056                  1x  https://www.laskarduino.cz/nabijecka-li-ion-clanku-tp4056-s-ochranou-microusb/
+Speaker KSQG-706BP                      1x  https://www.gme.cz/magnetodynamicky-menic-do-dps-ksqg-706bp
+Transistor PN2222A THT                  1x  https://www.gme.cz/bipolarni-tranzistor-pn2222a-to92
+Resistor 1kohm THT ~0.4W                9x  
+Resistor 200ohm THT ~0.4W               9x  
+Tact switch THT 6x6x5mm                 7x  https://www.gme.cz/tc-0103-t
+Diode MBR0520LT1G SMD SOD123            1x  https://www.gme.cz/dioda-mbr0520lt1g-smd
+Slide switch B143-2 THT                 1x  https://www.gme.cz/posuvny-spinac-b143-2
+Connector 4pin                          1x
+Header 7x lcd female                    1x
+Header 5x sd female                     1x
+Header 20x rpi pico male                2x

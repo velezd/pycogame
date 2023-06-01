@@ -1,0 +1,6 @@
+**/.vscode
+# KiCad backup files
+hardware/*.bak
+hardware/*.bck
+hardware/*.kicad_pcb-bak
+hardware/*.sch-bak
