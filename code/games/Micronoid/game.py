@@ -34,10 +34,11 @@ class Ball():
         self.w = 5
         self.y = y
         self.h = 5
-        self.sx = 0.05
-        self.sy = -0.05
-        self.min_s = -0.025
-        self.max_s = -0.075
+        self.speed_dif_scale = 0.02 * game.difficulty
+        self.sx = 0.05 + self.speed_dif_scale
+        self.sy = -0.05 - self.speed_dif_scale
+        self.min_s = -0.025 - self.speed_dif_scale
+        self.max_s = -0.075 - self.speed_dif_scale
         if img is None:
             self.img = Display.load_sprite('./img/ball.raw', 5, 5)
         else:
@@ -56,8 +57,8 @@ class Ball():
     def reset(self, x, y):
         self.x = x
         self.y = y
-        self.sx = 0.05
-        self.sy = -0.05        
+        self.sx = 0.05 + self.speed_dif_scale
+        self.sy = -0.05 - self.speed_dif_scale
 
     def update(self, dt):
         x = self.x + self.sx * dt
@@ -136,7 +137,7 @@ class Ball():
             self.sy = self.sy * -1
             # adjust speed based on where it hit the paddle
             adjx = (x + 2 - self.game.paddle.x)*0.001
-            # if speed x will increase -> decrease speed x
+            # if speed x will increase -> decrease speed y
             if (self.sx < 0 and adjx < 0) or (self.sx > 0 and adjx > 0):
                 if self.sy+abs(adjx) > self.min_s: # limit adjusment based on min y speed
                     adj = self.sy - self.min_s
@@ -456,6 +457,7 @@ class Game():
         # init game
         draw_walls(display, self.pa_xs-10, self.pa_xe+1)
         self.score = state[2]
+        self.difficulty = state[3]
         self.lives = state[4]
         self.draw_state_text(270)
         self.level = Level(self)
@@ -590,7 +592,7 @@ def menu(display, clock, sound, input, state):
                 dif -= 1
             draw_dif(dif)
         if input.up_pressed:
-            if dif < 9:
+            if dif < 5:
                 dif += 1
             draw_dif(dif)
         if input.a_pressed:
@@ -661,13 +663,13 @@ while True:
         display.clear()
         state = menu(display, clock, sound, input, state)
         collect()
-    print(mem_free())
+    #print(mem_free())
     display.clear()
     state = Game(display, clock, sound, input, state).run()
     collect()
-    print(mem_free())
+    #print(mem_free())
     display.clear()
     state = transition(display, clock, sound, input, state)
     collect()
-    print(mem_free())
+    #print(mem_free())
     
